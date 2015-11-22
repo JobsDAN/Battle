@@ -7,9 +7,15 @@ public class Unit {
 	private Sprite unitSprite;
 	private int HealthPoints;
 	private GameObject GOUnit;
-	private void Strike ();
-
-	public const float unitSpeed;
+	private float attackSpeed;
+	private void Strike ()
+	{
+		int k = 50;
+		if (target != null)
+			target.Hit (k);
+	}
+	
+	public const float movementSpeed;
 	public Unit (GameObject newUnit)
 	{
 		GOUnit = newUnit;
@@ -23,7 +29,7 @@ public class Unit {
 
 	public void Hit (int k)
 	{
-		target.HealthPoints -= k;
+		HealthPoints -= k;
 	}
 
 	public void SetTarget (Unit newTarget)
@@ -33,10 +39,8 @@ public class Unit {
 
 	public void Move(Vector2 vector)
 	{
-		GOUnit.transform.Translate (vector * Time.deltaTime * unitSpeed, Space.World);
+		GOUnit.transform.Translate (vector * Time.deltaTime * movementSpeed, Space.World);
 	}
-
-
 	
 	void Start () {
 	
