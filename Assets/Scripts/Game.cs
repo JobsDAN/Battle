@@ -11,14 +11,14 @@ public class Game : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Unit player = createUnit (playerSprite, new Vector2(1, 0));
-		Unit enemy = createUnit (enemySprite,  new Vector2(-1, 0));
+		Unit player = createUnit ("player", playerSprite, new Vector2(1, 0));
+		Unit enemy = createUnit ("enemy", enemySprite,  new Vector2(-1, 0));
 		units.AddLast (player);
 		units.AddLast (enemy);
 	}
 
-	Unit createUnit(Sprite sprite, Vector2 position) {
-		GameObject go = new GameObject ();
+	Unit createUnit(string name, Sprite sprite, Vector2 position) {
+		GameObject go = new GameObject (name);
 		go.transform.position = (Vector3)position;
 		SpriteRenderer sr = go.AddComponent<SpriteRenderer> ();
 		sr.sprite = sprite;
