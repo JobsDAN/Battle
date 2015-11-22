@@ -22,7 +22,7 @@
 !Library/AssetServerCacheV3
 !Library/AssetVersioning.db
 sysinfo.txt
-*.meta
+#*.meta
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
