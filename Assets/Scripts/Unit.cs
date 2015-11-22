@@ -5,7 +5,7 @@ public class Unit {
 
 	private Unit target;
 	private Sprite unitSprite;
-	private int HealthPoints;
+	private int healthPoints;
 	private GameObject GOUnit;
 	private float attackSpeed;
 	private void Strike ()
@@ -14,12 +14,17 @@ public class Unit {
 		if (target != null)
 			target.Hit (k);
 	}
+
+	private void Die ()
+	{
+		this.GOUnit = null;
+	}
 	
-	public const float movementSpeed;
+	public const float movementSpeed = 2.0f;
 	public Unit (GameObject newUnit)
 	{
 		GOUnit = newUnit;
-		HealthPoints = 100;
+		healthPoints = 100;
 	}
 
 	public void addStuff(string item)
@@ -29,7 +34,9 @@ public class Unit {
 
 	public void Hit (int k)
 	{
-		HealthPoints -= k;
+		healthPoints -= k;
+		if (healthPoints <= 0)
+			Die();
 	}
 
 	public void SetTarget (Unit newTarget)
